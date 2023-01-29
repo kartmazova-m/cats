@@ -16,9 +16,9 @@ class Card {
         const cardLike = this.element.querySelector('.card__like');
 
         cardTitle.textContent = this.dataCat.name;
-        cardImage.src = this.dataCat.img_link;
+        cardImage.src = this.dataCat.image;
 
-        if (!this.dataCat.favourite) {
+        if (!this.dataCat.favorite) {
             cardLike.classList.toggle('card__like_active');
         } else {
             cardLike.remove();

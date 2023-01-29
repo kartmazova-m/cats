@@ -13,6 +13,12 @@ popupAddCat.setEventListener();
 //     sectionCard.append(firstCat);
 // })
 
+function createCat(dataCat) {
+    const cat = new Card(dataCat, '#card-template');
+    const firstCat = cat.getElement();
+    sectionCard.append(firstCat);
+}
+
 function serializeForm(elements) {
     const formData = {};
 
@@ -29,7 +35,14 @@ function serializeForm(elements) {
             formData[input.name] = input.checked;
         }
     });
+    return formData
 }
+
+api.getAllCats().then((data) => {
+    data.forEach(catData => {
+        createCat(catData);
+    })
+})
 
 
 
@@ -37,9 +50,19 @@ function serializeForm(elements) {
 function handleFormAddCat(e) {
     e.preventDefault()
     const elementsFromCat = [...formAddCat.elements]
-    serializeForm(elementsFromCat) 
+    const dataFormCat = serializeForm(elementsFromCat);
+
+    api.addNewCat(dataFormCat).then(() => {
+        createCat(dataFormCat);
+    })
+        
     popupAddCat.close();
 }
 
 btnOpenPopupForm.addEventListener('click', () => popupAddCat.open());
 formAddCat.addEventListener('submit', handleFormAddCat);
+
+
+// document.cookie = 'email=kartmazova.m@mail.ru;samesite=strict;max-age=360'
+
+Cookies.set('cook', 'res')

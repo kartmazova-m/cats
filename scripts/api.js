@@ -6,7 +6,7 @@
 // - DELETE (https://cats.petiteweb.dev/api/single/:user/delete/:id)- удалить котика из базы данных
 
 const CONFIG_API = {
-    url: 'https://cats.petiteweb.dev/api/single/DanilaNagornyi',
+    url: 'https://cats.petiteweb.dev/api/single/kartmazova-m',
     headers: {
         'Content-Type': 'application/json'
     }
